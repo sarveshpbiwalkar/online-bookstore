@@ -51,6 +51,8 @@ function addBook() {
 }
 
 // Function to search books by title
+const searchButton = document.getElementById('searchButton');
+
 function searchBooks(query) {
     const filteredBooks = books.filter(book =>
         book.title.toLowerCase().includes(query.toLowerCase())
@@ -59,6 +61,21 @@ function searchBooks(query) {
     // Display filtered books
     displayBooks(filteredBooks);
 }
+
+// Event listener for the search button click
+searchButton.addEventListener('click', function() {
+    // Trigger the search operation
+    searchBooks();
+});
+
+// Event listener for the Enter key
+searchInput.addEventListener('keyup', function(event) {
+    // Check if the Enter key is pressed (key code 13)
+    if (event.keyCode === 13) {
+        // Trigger the search operation
+        searchBooks();
+    }
+});
 
 // Function to handle adding a book to the cart
 function addToCart(title) {
