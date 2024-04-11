@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Online Bookstore</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <h1>Online Bookstore</h1>
+        <nav>
+            <ul>
+                <li><a href="#">Home</a></li>
+                <li><a href="#">Books</a></li>
+                <li><a href="#">About</a></li>
+                <li><a href="#">Contact</a></li>
+            </ul>
+        </nav>
+        <input type="text" id="searchInput" placeholder="Search by title..." oninput="searchBooks(this.value)">
+    </header>
+    <main>
+        <section id="books">
+            <h2>Featured Books</h2>
+            <div class="book">
+                <img src="book1.jpg" alt="">
+                <h3>Book Title</h3>
+                <p>Author Name</p>
+                <p>Price: $19.99</p>
+                <button>Add to Cart</button>
+            </div>
+            <!-- More books here -->
+        </section>
+        <div class="addBook">
+            <h2>Add New Book</h2>
+                <input type="text" id="titleInput" placeholder="Title">
+                <input type="text" id="authorInput" placeholder="Author">
+                <input type="number" id="priceInput" placeholder="Price">
+                <input type="text" id="imageInput" placeholder="Image URL">
+                <button onclick="addBook()">Add Book</button>
+        </div>
+    </main>
+    
+    <br><br><br>
+    <footer>
+        <p>&copy; 2024 Online Bookstore. All rights reserved.</p>
+        Made with ❤️ by <a href="https://github.com/sarveshpbiwalkar">Sarvesh Biwalkar</a>
+    </footer>
+    <script src="scripts.js"></script>
+</body>
+</html>
