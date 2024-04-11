@@ -17,8 +17,8 @@
                 <li><a href="#">Contact</a></li>
             </ul>
         </nav>
-        <input type="text" id="searchInput" placeholder="Search by title..." oninput="searchBooks(this.value)">
-        <button id="searchButton">Search</button>
+        <input type="text" id="searchInput" placeholder="Search by title..." <!--oninput="searchBooks(this.value)"-->
+        <button id="searchButton" onclick="searchBooks(searchInput.value)">Search</button>
     </header>
     <main>
         <section id="books">
@@ -34,9 +34,9 @@
         </section>
         <div class="addBook">
             <h2>Add New Book</h2>
-                <input type="text" id="titleInput" placeholder="Title">
-                <input type="text" id="authorInput" placeholder="Author">
-                <input type="number" id="priceInput" placeholder="Price">
+                <input type="text" id="titleInput" placeholder="Title" required>
+                <input type="text" id="authorInput" placeholder="Author" required>
+                <input type="number" id="priceInput" placeholder="Price" required>
                 <input type="text" id="imageInput" placeholder="Image URL">
                 <button onclick="addBook()">Add Book</button>
         </div>

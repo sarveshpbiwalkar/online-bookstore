@@ -1,3 +1,6 @@
+var searchInput = document.getElementById('searchInput');
+var searchButton = document.getElementById('searchButton');
+
 // Sample array of books (dummy data)
 let books = [
     { title: "HTML:A Beginner's Guide", author: "by Wendy Willard", price: 19.99, imageUrl: "book1.jpg" },
@@ -7,11 +10,13 @@ let books = [
 ];
 
 // Function to display books on the webpage
-function displayBooks() {
+function displayBooks(filteredBooks = null) {
     const booksSection = document.getElementById("books");
     booksSection.innerHTML = ""; // Clear existing books
 
-    books.forEach(book => {
+    const booksToDisplay = filteredBooks ? filteredBooks : books;
+
+    booksToDisplay.forEach(book => {
         const bookDiv = document.createElement("div");
         bookDiv.classList.add("book");
 
@@ -26,6 +31,7 @@ function displayBooks() {
         booksSection.appendChild(bookDiv);
     });
 }
+
 
 function addBook() {
     // Get input values
@@ -50,9 +56,23 @@ function addBook() {
     booksContainer.appendChild(book);
 }
 
-// Function to search books by title
-const searchButton = document.getElementById('searchButton');
+// Event listener for the Enter key
+searchInput.addEventListener('keypress', function(event) {
+    // Check if the Enter key is pressed (key code 13)
+    if (event.key === "Enter") {
+        // Trigger the search operation
+        event.preventDefault();
+        searchBooks(searchInput.value);
+    }
+});
 
+// Event listener for the search button click
+searchButton.addEventListener('click', function() {
+    // Trigger the search operation
+    searchBooks(searchInput.value);
+});
+
+// Function to search books by title
 function searchBooks(query) {
     const filteredBooks = books.filter(book =>
         book.title.toLowerCase().includes(query.toLowerCase())
@@ -61,21 +81,6 @@ function searchBooks(query) {
     // Display filtered books
     displayBooks(filteredBooks);
 }
-
-// Event listener for the search button click
-searchButton.addEventListener('click', function() {
-    // Trigger the search operation
-    searchBooks();
-});
-
-// Event listener for the Enter key
-searchInput.addEventListener('keyup', function(event) {
-    // Check if the Enter key is pressed (key code 13)
-    if (event.keyCode === 13) {
-        // Trigger the search operation
-        searchBooks();
-    }
-});
 
 // Function to handle adding a book to the cart
 function addToCart(title) {
